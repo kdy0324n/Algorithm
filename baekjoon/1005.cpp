@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 using tiii = tuple<int,int,int>;
 using pii = pair<int,int>;
 using ll = long long;

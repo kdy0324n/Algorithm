@@ -18,7 +18,6 @@ int Find(int u) {
         par[u] = ret;
         return ret;
 }
-
  
 
 //num1의 집합에 num2 집합을 합친다
