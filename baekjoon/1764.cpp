@@ -25,6 +25,5 @@ int main(){
     for(auto i:ans){
         cout<<i<<'\n';
     }
-
     return 0;
 }

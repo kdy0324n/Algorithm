@@ -19,6 +19,7 @@ int main(){
         string str;
         cin>>str;
         cout<<Map[str]<<'\n';
+        
     }
 
     return 0;
