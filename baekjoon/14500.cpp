@@ -1,38 +1,53 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int n,m;
-int arr[700][700];
+int arr[600][600];
+int n, m;
+int dy[19][4] = { {0,0,0,0},{0,1,2,3},{0,0,1,1},
+{0,0,-1,-2},{0,0,-1,-2},{0,0,1,2},{0,0,1,2},
+{0,0,0,-1},{0,0,0,-1},{0,0,0,1},{0,0,0,1},
+{0,1,1,2},{0,1,1,2},{0,0,-1,-1},{0,0,1,1},
+{0,0,-1,1},{0,0,-1,1},{0,0,-1,0},{0,0,1,0}
+				};
+int dx[19][4] = { {0,1,2,3},{0,0,0,0},{0,1,0,1},
+{0,1,1,1},{0,-1,-1,-1},{0,1,1,1},{0,-1,-1,-1},
+{0,1,2,2},{0,-1,-2,-2},{0,1,2,2},{0,-1,-2,-2},
+{0,0,1,1},{0,0,-1,-1},{0,1,1,2},{0,1,1,2},
+{0,1,1,1},{0,-1,-1,-1},{0,1,1,2},{0,1,1,2}
+};
+int fuc(int y, int x) {
+	int res = 0;
+	for (int i = 0; i < 19; i++) {
+		int tmp = 0;
+		for (int j = 0; j < 4; j++) {
+			int ny = y + dy[i][j];
+			int nx = x + dx[i][j];
+			tmp += arr[ny][nx];
+		}
+		res = max(res, tmp);
+	}
+	return res;
 
-int ans;
-int fuc(int y,int x){
-    int maxval = 0;
-    int a;
-    a = arr[y][x] + arr[y][x+1] + arr[y-1][x+1] + arr[y-2][x+1];
-    maxval = max(maxval,a);
-    a = arr[y][x] + arr[y][x-1]+arr[y-1][x-1] + arr[y-2][x-1];
-    maxval = max(maxval,a);
-    a = arr[y][x] + arr[y][x+1] + arr[y+1][x+1] + arr[y+2][x+1];
-    maxval = max(maxval,a);
-    a = arr[y][x] + arr[y][x-1] + arr[y+1][x-1] + arr[y+2][x-1];
-    maxval = max(maxval,a);
-    
 }
-int main(){
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cin>>n>>m;
-    
-    for(int i=5;i<=n+5;i++){
-        for(int j=5;j<=m+5;j++){
-            cin>>arr[i][j];
-        }
-    }
-    for(int i=5;i<=n+5;i++){
-        for(int j=5;j<=m+5;j++){
-            ans = max(ans,fuc(i,j));
-        }
-    }
 
-    return 0;
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n >> m;
+	for (int i = 4; i < n+4; i++) {
+		for (int j = 4; j < m+4; j++) {
+			cin >> arr[i][j];
+		}
+	}
+	int ans = 0;
+	for (int i = 4; i < 4 + n; i++) {
+		for (int j = 4; j < 4 + m; j++) {
+			ans = max(ans, fuc(i, j));
+		}
+	}
+	cout << ans;
+
+	return 0;
 }
