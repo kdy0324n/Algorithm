@@ -36,7 +36,7 @@ bool isPrime(int n){
 
 ```c++
 //주어진 자연수 n을 소인수분해
-vector<pair<long long,int>>primefacotrization(long long n){
+vector<pair<long long,int>>primefactorization(long long n){
     //n의 제곱근만큼만 for문 사용
     long long sqrtn = sqrt(n);
     vector<long long,int>ret;//소수의 값과 개수
@@ -73,8 +73,6 @@ void eratosthenes(){
 ```
 
 **에라토스테네스의 체를 이용한 빠른 소인수 분해**
-
-
 
 ```c++
 int n,
