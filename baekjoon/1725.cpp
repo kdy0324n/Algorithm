@@ -49,32 +49,26 @@ int main(){
 #include<bits/stdc++.h>
 using namespace std;
 
+int n;
 stack<int>st;
-
 int arr[100010];
 int ans;
-int main(){
-    st.push(0);
-    int n;
-    cin>>n;
-    for(int i=1;i<=n;i++){
-        cin>>arr[i];
-    }
-    for(int i=1;i<=n+1;i++){
-        if(i==1){
-            st.push(i);
-            continue;
-        }
-        if(arr[st.top()]<=arr[i]){
-            st.push(i);
-            continue;
-        }
-        while(!st.empty() && arr[st.top()]>arr[i]){
-            int t = st.top();
-            st.pop();
-            ans = max(ans,arr[t] * (i - st.top() -1));
-        }
-        st.push(i);
-    }
-    cout<<ans;
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n;
+	for (int i = 1; i <= n; i++)cin >> arr[i];
+	st.push(0);
+	for (int i = 1; i <= n+1; i++) {
+		while (!st.empty() && arr[st.top()] > arr[i]) {
+			int t = st.top();
+			st.pop();
+			ans = max(ans, arr[t] * (i - st.top() - 1));
+		}
+		st.push(i);
+	}
+	cout << ans;
+
+	return 0;
 }
